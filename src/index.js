@@ -1,10 +1,8 @@
-var express = require("express");
-var app = express();
+const express = require("express")
+const { validaLinhaDigitavel } = require("./validators/validaLinhaDigitavelService")
 
-app.get("/boleto/:linhadigitavel", function(req, res){
-    res.send(req.params)
-});
+const app = express()
 
-app.listen(8080, function(){
-    console.log("Servidor rodando na url http://localhost:8080");
-});
+app.get('/boleto/:codigo', validaLinhaDigitavel)
+
+app.listen(8080, () => console.log("Servidor rodando na url http://localhost:8080"))
